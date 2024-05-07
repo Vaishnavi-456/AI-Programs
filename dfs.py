@@ -1,50 +1,27 @@
-# g = {
-#     0:[1,2],
-#     1:[0,3,4],
-#     2:[0,3],
-#     3:[1,2,4],
-#     4:[1,3]
-# }
+def dfs(graph, start, visited):
+    visited[start] = True
+    print(start)
 
-# def dfs(g,s):
-#     visited[s]=1
-#     print(s)
-    
-#     for c in g[s]:
-#         if not visited [c]:
-#             dfs(g,c)
+    for neighbor in graph[start]:
+        if not visited[neighbor]:
+            dfs(graph, neighbor, visited)
 
+# Initialize an empty graph
+graph = {}
 
-# visited = [0]*5
+# Prompt the user to input the number of vertices in the graph
+num_vertices = int(input("Enter the number of vertices in the graph: "))
 
-# dfs(g,0)
+# Prompt the user to input the adjacency list for each vertex
+for i in range(num_vertices):
+    neighbors = list(map(int, input(f"Enter the neighbors of vertex {i}: ").split()))
+    graph[i] = neighbors
 
+# Initialize a list to track visited vertices
+visited = [False] * num_vertices
 
+# Prompt the user to input the starting vertex for DFS traversal
+start_vertex = int(input("Enter the starting vertex for DFS traversal: "))
 
-
-
-
-
-
-
-
-g = {
-    0:[1,2],
-    1:[0,3,4],
-    2:[0,3],
-    3:[1,2,4],
-    4:[1,3]
-}
-
-def dfs(g, s):
-    visited[s] = 1
-    print(s)
-
-    for c in g[s]:
-        if not visited[c]:
-            dfs(g, c)
-
-visited = [0]*5
-
-dfs(g, 0)
-
+# Perform DFS traversal starting from the specified vertex
+dfs(graph, start_vertex, visited)
