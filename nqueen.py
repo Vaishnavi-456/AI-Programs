@@ -14,7 +14,7 @@ def isSafe(i, j):
     
     for x in range(N):
         for y in range(N):
-            if (x + y == i + j) or (x - y == i - j) or (x - i == y - j) or (i - x == y - j):
+            if (x + y == i + j) or (x - y == i - j):
                 if b[x][y] == queen:
                     return False
     
