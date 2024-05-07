@@ -1,48 +1,30 @@
-# g = {
-#     0:[1,2],
-#     1:[0,3,4],
-#     2:[0,3],
-#     3:[1,2,4],
-#     4:[1,3]
-# }
+def bfs(graph, start):
+    queue = [start]
+    visited = [start]
+
+    while queue:
+        current = queue.pop(0)
+        print(current)
+        for neighbor in graph[current]:
+            if neighbor not in visited:
+                queue.append(neighbor)
+                visited.append(neighbor)
+
+# Initialize an empty graph
+graph = {}
+
+# Prompt the user to input the number of vertices in the graph
+num_vertices = int(input("Enter the number of vertices in the graph: "))
+
+# Prompt the user to input the adjacency list for each vertex
+for i in range(num_vertices):
+    neighbors = list(map(int, input(f"Enter the neighbors of vertex {i}: ").split()))
+    graph[i] = neighbors
+
+# Prompt the user to input the starting vertex for BFS traversal
+start_vertex = int(input("Enter the starting vertex for BFS traversal: "))
+
+# Perform BFS traversal starting from the specified vertex
+bfs(graph, start_vertex)
 
 
-# def bfs(g, s):
-#     q = [s]
-#     visited = [s]
-
-#     while q:
-#         curr = q.pop(0)
-#         print(curr)
-#         for c in g[curr]:
-#             if c not in visited:
-#                 q.append(c)
-#                 visited.append(c)
-
-# bfs(g, 0)
-
-
-
-
-g = {
-    0:[1,2],
-    1:[0,3,4],
-    2:[0,3],
-    3:[1,2,4],
-    4:[1,3]
-}
-
-
-def bfs(g, s):
-    q = [s]
-    visited = [s]
-
-    while q:
-        curr = q.pop(0)
-        print(curr)
-        for c in g[curr]:
-            if c not in visited:
-                q.append(c)
-                visited.append(c)
-
-bfs(g, 0)
